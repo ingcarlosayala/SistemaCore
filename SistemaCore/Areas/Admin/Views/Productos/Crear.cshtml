@@ -1,0 +1,125 @@
+﻿@model SistemaCore.Models.ViewsModels.ProductoVM
+
+@{
+    ViewData["Title"] = "Crear Producto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xl">
+
+    <form method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-2 mt-5">
+                <div class="card shadow">
+                    <div class="card-header bg-primary p-5 p-md-2">
+                        <h4 class="text-white text-center text-md-start"> Nuevo Producto</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <label asp-for="Producto.Codigo" class="form-label text-uppercase fw-bold text-muted"></label>
+                            <input asp-for="Producto.Codigo" type="text" class="form-control" placeholder="Codigo" />
+                            <span asp-validation-for="Producto.Codigo" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="Producto.Descripcion" class="form-label text-uppercase fw-bold text-muted"></label>
+                            <input asp-for="Producto.Descripcion" type="text" class="form-control" placeholder="Descripcion del Producto" />
+                            <span asp-validation-for="Producto.Descripcion" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="mb-2">
+                                    <label asp-for="Producto.Costo" class="form-label text-uppercase fw-bold text-muted"></label>
+                                    <input asp-for="Producto.Costo" type="number" value="" class="form-control" placeholder="$0.00" />
+                                    <span asp-validation-for="Producto.Costo" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="mb-2">
+                                    <label asp-for="Producto.Precio" class="form-label text-uppercase fw-bold text-muted"></label>
+                                    <input asp-for="Producto.Precio" type="number" value="" class="form-control" placeholder="$0.00" />
+                                    <span asp-validation-for="Producto.Precio" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="mb-2">
+                                    <label asp-for="Producto.Categoria.Nombre" class="form-label text-uppercase fw-bold text-muted"></label>
+                                    <select asp-for="Producto.CategoriaId" asp-items="@Model.CategoriaLista" class="form-select">
+                                        <option selected disabled>Seleccione una Categoria</option>
+                                    </select>
+                                    <span asp-validation-for="Producto.CategoriaId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6">
+                                <div class="mb-2">
+                                    <label asp-for="Producto.Marca.Nombre" class="form-label text-uppercase fw-bold text-muted"></label>
+                                    <select asp-for="Producto.MarcaId" asp-items="@Model.MarcaLista" class="form-select">
+                                        <option selected disabled>Seleccione una Marca</option>
+                                    </select>
+                                    <span asp-validation-for="Producto.MarcaId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="mb-2">
+                                    <label asp-for="Producto.Estado" class="form-label text-uppercase fw-bold text-muted"></label>
+                                    <select asp-for="Producto.Estado" class="form-select">
+                                        <option selected disabled>Seleccione</option>
+                                        <option value="true">Activo</option>
+                                        <option value="false">Inactivo</option>
+                                    </select>
+                                    <span asp-validation-for="Producto.Estado" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-6 mb-3">
+                                <label for="file" class="form-label text-uppercase fw-bold text-muted">Imagen</label>
+                                <input type="file" name="file" id="file" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <button onclick="return ValidarImagen()" type="submit" class="btn btn-primary"> <i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+                            <a asp-action="Index" class="btn btn-success"> <i class="fa-solid fa-arrow-left"></i> Atras</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        const ValidarImagen = () => {
+
+            const imagen = document.querySelector("#file").value;
+
+            if(imagen === ""){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Favor de Seleccionar una Imagen!',
+                })
+                return false;
+            }
+
+        }
+
+    </script>
+}
+

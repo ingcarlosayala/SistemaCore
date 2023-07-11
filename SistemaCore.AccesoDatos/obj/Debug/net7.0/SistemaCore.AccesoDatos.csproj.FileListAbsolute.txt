@@ -1,0 +1,15 @@
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\bin\Debug\net7.0\SistemaCore.AccesoDatos.deps.json
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\bin\Debug\net7.0\SistemaCore.AccesoDatos.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\bin\Debug\net7.0\SistemaCore.AccesoDatos.pdb
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.csproj.AssemblyReference.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.AssemblyInfoInputs.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.AssemblyInfo.cs
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\refint\SistemaCore.AccesoDatos.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.pdb
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\ref\SistemaCore.AccesoDatos.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\bin\Debug\net7.0\SistemaCore.Models.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\bin\Debug\net7.0\SistemaCore.Models.pdb
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.AccesoDatos\obj\Debug\net7.0\SistemaCore.AccesoDatos.csproj.CopyComplete

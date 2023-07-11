@@ -1,0 +1,12 @@
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\bin\Debug\net7.0\SistemaCore.Utilidades.deps.json
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\bin\Debug\net7.0\SistemaCore.Utilidades.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\bin\Debug\net7.0\SistemaCore.Utilidades.pdb
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\SistemaCore.Utilidades.csproj.AssemblyReference.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\SistemaCore.Utilidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\SistemaCore.Utilidades.AssemblyInfoInputs.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\SistemaCore.Utilidades.AssemblyInfo.cs
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\SistemaCore.Utilidades.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\SistemaCore.Utilidades.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\refint\SistemaCore.Utilidades.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\SistemaCore.Utilidades.pdb
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Utilidades\obj\Debug\net7.0\ref\SistemaCore.Utilidades.dll

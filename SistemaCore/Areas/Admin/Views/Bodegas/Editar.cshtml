@@ -1,0 +1,60 @@
+﻿@model SistemaCore.Models.Bodega
+
+@{
+    ViewData["Title"] = "Actualizar Bodega";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-xl">
+
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <input hidden asp-for="Id" />
+
+        <div class="row">
+            <div class="col-12 col-lg-6 offset-lg-3 mt-5">
+                <div class="card shadow">
+                    <div class="card-header bg-primary p-5 p-md-2">
+                        <h4 class="text-white text-center text-md-start"> <i class="fa-solid fa-store"></i> Actualizar Bodega</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-2">
+                            <label asp-for="Nombre" class="form-label text-uppercase fw-bold text-muted"></label>
+                            <input asp-for="Nombre" type="text" class="form-control" placeholder="Nombre de Bodega" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="Descripcion" class="form-label text-uppercase fw-bold text-muted"></label>
+                            <input asp-for="Descripcion" type="text" class="form-control" placeholder="Descripcion de Bodega" />
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-2">
+                            <label asp-for="Estado" class="form-label text-uppercase fw-bold text-muted"></label>
+                            <select asp-for="Estado" class="form-select">
+                                <option selected disabled>Seleccione</option>
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo  </option>
+                            </select>
+                            <span asp-validation-for="Estado" class="text-danger"></span>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary"> <i class="fa-solid fa-pen-to-square"></i> Actualizar</button>
+                            <a asp-action="Index" class="btn btn-success"> <i class="fa-solid fa-arrow-left"></i> Atras</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+

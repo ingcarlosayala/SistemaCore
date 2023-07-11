@@ -1,0 +1,12 @@
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\bin\Debug\net7.0\SistemaCore.Models.deps.json
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\bin\Debug\net7.0\SistemaCore.Models.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\bin\Debug\net7.0\SistemaCore.Models.pdb
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\SistemaCore.Models.csproj.AssemblyReference.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\SistemaCore.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\SistemaCore.Models.AssemblyInfoInputs.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\SistemaCore.Models.AssemblyInfo.cs
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\SistemaCore.Models.csproj.CoreCompileInputs.cache
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\SistemaCore.Models.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\refint\SistemaCore.Models.dll
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\SistemaCore.Models.pdb
+C:\Users\carlo\Desktop\.NetCoreMVC\SistemaCore\SistemaCore.Models\obj\Debug\net7.0\ref\SistemaCore.Models.dll
