@@ -16,6 +16,7 @@ namespace SistemaCore.AccesoDatos.Repositorio
         public ICategoriaRepositorio Categoria { get; private set; }
         public IMarcaRepositorio Marca { get; private set; }
         public IProductoRepositorio Producto { get; private set; }
+        public IUsuarioAplicacion UsuarioAplicacion { get; private set; }
 
         public UnidadTrabajo(ApplicationDbContext dbContext)
         {
@@ -24,6 +25,7 @@ namespace SistemaCore.AccesoDatos.Repositorio
             Categoria = new CategoriaRepositorio(dbContext);
             Marca = new MarcaRepositorio(dbContext);
             Producto = new ProductoRepositorio(dbContext);
+            UsuarioAplicacion = new UsuarioAplicacion(dbContext);
         }
 
         public void Dispose()

@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using SistemaCore.AccesoDatos.Repositorio;
 using SistemaCore.AccesoDatos.Repositorio.IRepositorio;
 using SistemaCore.Data;
+using SistemaCore.Utilidades;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,12 +14,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
 //Unidad de Trabajo
 builder.Services.AddScoped<IUnidadTrabajo, UnidadTrabajo>();
+
+builder.Services.AddScoped<IEmailSender,EmailSender>();
+
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 

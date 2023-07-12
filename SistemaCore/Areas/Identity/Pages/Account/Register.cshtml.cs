@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -16,8 +17,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using SistemaCore.Models;
+using SistemaCore.Utilidades;
 
 namespace SistemaCore.Areas.Identity.Pages.Account
 {
@@ -29,13 +33,15 @@ namespace SistemaCore.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -43,6 +49,7 @@ namespace SistemaCore.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            this.roleManager = roleManager;
         }
 
         /// <summary>
@@ -97,12 +104,45 @@ namespace SistemaCore.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Display(Name = "Telefono")]
+            public string PhoneNumber { get; set; }
+
+            [Required(ErrorMessage = "Nombre es requerido")]
+            public string Nombre { get; set; }
+
+            [Required(ErrorMessage = "Apellido es requerido")]
+            public string Apellido { get; set; }
+
+            [Required(ErrorMessage = "Ciudad es requerida")]
+            public string Ciudad { get; set; }
+
+            [Required(ErrorMessage = "Pais es requerido")]
+            public string Pais { get; set; }
+
+            [Required(ErrorMessage = "Direccion es requerido")]
+            public string Direccion { get; set; }
+
+            [NotMapped]
+            public string Role { get; set; }
+
+            public IEnumerable<SelectListItem> ListaRol { get; set; }
         }
 
 
         public async Task OnGetAsync(string returnUrl = null)
         {
             ReturnUrl = returnUrl;
+
+            Input = new InputModel()
+            {
+                ListaRol = roleManager.Roles.Where(r => r.Name != DS.Cliente).Select(r => r.Name).Select(l => new SelectListItem
+                {
+                    Text = l,
+                    Value = l
+                })
+            };
+
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
@@ -112,7 +152,18 @@ namespace SistemaCore.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
+                var user = new UsuarioAplicacion()
+                {
+                    UserName = Input.Email,
+                    Email = Input.Email,
+                    Nombre = Input.Nombre,
+                    Apellido = Input.Apellido,
+                    Ciudad = Input.Ciudad,
+                    Pais = Input.Pais,
+                    Direccion = Input.Direccion,
+                    PhoneNumber = Input.PhoneNumber,
+                    Role = Input.Role
+                };
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -122,17 +173,41 @@ namespace SistemaCore.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
+                    if (!await roleManager.RoleExistsAsync(DS.Admin))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(DS.Admin));
+                    }
 
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    if (!await roleManager.RoleExistsAsync(DS.Cliente))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(DS.Cliente));
+                    }
+
+                    if (!await roleManager.RoleExistsAsync(DS.Inventario))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(DS.Inventario));
+                    }
+
+                    if (user.Role == null)
+                    {
+                        await _userManager.AddToRoleAsync(user, DS.Cliente);
+                    }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, user.Role);
+                    }
+
+                    var userId = await _userManager.GetUserIdAsync(user);
+                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    //code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    //var callbackUrl = Url.Page(
+                    //    "/Account/ConfirmEmail",
+                    //    pageHandler: null,
+                    //    values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
+                    //    protocol: Request.Scheme);
+
+                    //await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
+                    //    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
@@ -140,8 +215,15 @@ namespace SistemaCore.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        if (user.Role == null)
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return LocalRedirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Usuarios", new { Area = "Admin" });
+                        }
                     }
                 }
                 foreach (var error in result.Errors)
