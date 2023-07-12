@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SistemaCore.Models.Producto>
+﻿@model SistemaCore.Models.Especificaciones.PageList<SistemaCore.Models.Producto>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -45,6 +45,31 @@
                     </div>
                 </div>
             }
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <a asp-action="Index"
+               asp-route-pageNumber="@(1)" class="btn btn-outline-primary"
+               asp-route-busquedaActual="@ViewData["BusquedaActual"]">
+                <i class="fa-solid fa-backward-step"></i>
+            </a>
+
+            <a asp-action="Index"
+               asp-route-pageNumber="@((int)ViewData["PageNumber"]-1)" class="btn btn-outline-primary @ViewData["Previo"]"
+               asp-route-busquedaActual="@ViewData["BusquedaActual"]">
+                <i class="fa-solid fa-arrow-left"></i> Anterior
+            </a>
+            <span>Pagina @ViewData["PageNumber"] de @ViewData["TotalPaginas"]</span>
+            <a asp-action="Index"
+               asp-route-pageNumber="@((int)ViewData["PageNumber"] +1)" class="btn btn-outline-primary @ViewData["Siguiente"]"
+               asp-route-busquedaActual="@ViewData["BusquedaActual"]">
+                <i class="fa-solid fa-arrow-right"></i> Siguiente
+            </a>
+            <a asp-action="Index"
+               asp-route-pageNumber="@ViewData["TotalPaginas"]" class="btn btn-outline-primary"
+               asp-route-busquedaActual="@ViewData["BusquedaActual"]">
+                <i class="fa-solid fa-forward-step"></i>
+            </a>
         </div>
 
     </div>
